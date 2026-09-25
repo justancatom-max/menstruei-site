@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menstruei?! — informação sem vergonha</title>
+<style>
+:root{
+  --pink:#ff6fb5;--lilac:#a98cff;--aqua:#62ddd2;--blue:#77b9ff;
+  --ink:#30254b;--muted:#5b4b6b;--line:#e5d6ef;--white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:#fff9fd;color:var(--ink);
+  font-family:"Trebuchet MS",system-ui,sans-serif;
+}
+button{font:inherit}
+.site{max-width:900px;margin:auto;padding:14px}
+.top-actions{display:flex;justify-content:flex-end;margin:4px 0 8px}
+button{cursor:pointer}
+.discrete-btn,.nav button,.card button{
+  min-height:44px;border-radius:16px;border:1px solid var(--line);
+  font-weight:800;color:#4c3862;background:#fff;
+}
+.discrete-btn{padding:9px 13px}
+.hero{
+  border:2px solid #fff;border-radius:28px;padding:25px;
+  background:linear-gradient(135deg,#ffd8ed,#ddd5ff 52%,#c9faf4);
+  box-shadow:0 10px 30px rgba(80,45,100,.12);overflow:hidden;position:relative;
+}
+.hero:after{content:"✦ ｡ﾟ✧ ୨୧ ✧ﾟ｡ ✦";position:absolute;right:14px;top:12px;color:#7459ae;letter-spacing:4px}
+.tag{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:.78rem;font-weight:900;margin:3px}
+h1{font-size:clamp(2.4rem,9vw,4.4rem);line-height:.92;margin:12px 0;color:#432d61;letter-spacing:-2px}
+h2{font-size:1.35rem;margin:0 0 8px;color:#432d61}
+p{line-height:1.58;margin:0 0 11px;color:var(--muted)}
+.nav{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+.nav button{padding:9px 7px;font-size:.86rem}
+.nav button.active{background:#432d61;color:#fff;border-color:#432d61}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:22px;padding:17px;
+  box-shadow:0 6px 20px rgba(80,45,100,.06);
+}
+.card button{width:100%;text-align:left;padding:10px;margin-top:8px;background:#faf7ff}
+.pill{font-size:1.65rem;margin-bottom:5px}
+.section{margin-top:16px}
+.notice{background:#fff1f8;border:1px solid #ffc9e4;border-radius:18px;padding:14px;margin-top:12px;color:#493652}
+.notice strong{color:#432d61}
+.step{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed #decde8;color:var(--muted);line-height:1.5}
+.num{flex:0 0 34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#ffd3e9;color:#713a61;font-weight:900}
+.hidden{display:none!important}
+footer{color:#493652!important;font-size:.88rem;font-weight:700;text-align:center;padding:16px 4px 10px}
+.discreet-mode .hero{background:linear-gradient(135deg,#edf9f7,#eeeaff)}
+.discreet-mode .tag{display:none}
+.discreet-mode .hero h1{font-size:clamp(2rem,8vw,3.3rem)}
+.discreet-mode .hero p{color:#4d5260}
+@media(max-width:560px){
+  .site{padding:10px}
+  .grid{grid-template-columns:1fr}
+  .nav button{font-size:.74rem;padding:8px 3px}
+  .hero{padding:22px 18px}
+}
+</style>
+</head>
+<body>
+<div class="site" id="app">
+  <div class="top-actions">
+    <button class="discrete-btn" id="discreetToggle">👀 Modo discreto</button>
+  </div>
+
+  <header class="hero">
+    <span class="tag">💿 versão beta</span>
+    <span class="tag">🏳️‍⚧️ para quem menstrua</span>
+    <h1 id="heroTitle">Menstruei?!</h1>
+    <p id="heroText"><strong>Calma. Você não precisa descobrir tudo sozinho/a.</strong><br>
+    Um cantinho informativo, acolhedor e sem julgamentos para alunas e alunos que menstruam.</p>
+  </header>
+
+  <nav class="nav" aria-label="Navegação principal">
+    <button class="active" data-section="inicio">⌂ Início</button>
+    <button data-section="manual">🩸 Manual</button>
+    <button data-section="dicas">💡 Dicas</button>
+    <button data-section="ajuda">🫶 Ajuda</button>
+  </nav>
+
+  <main>
+    <section id="inicio" class="section page">
+      <div class="grid">
+        <div class="card"><div class="pill">🩷</div><h2>Por que existe?</h2>
+          <p>Porque menstruar pode dar vergonha, medo ou um milhão de dúvidas — especialmente na escola.</p>
+          <p>Aqui você encontra informação sem vergonha e sem julgamento.</p>
+        </div>
+        <div class="card"><div class="pill">🏳️‍⚧️</div><h2>Menstruação não tem gênero</h2>
+          <p>Meninos trans e outras pessoas que menstruam também merecem informação, acolhimento e privacidade.</p>
+        </div>
+        <div class="card"><div class="pill">✨</div><h2>Escolha seu caminho</h2>
+          <button data-jump="manual">Quero entender melhor →</button>
+          <button data-jump="dicas">Quero dicas práticas →</button>
+        </div>
+        <div class="card"><div class="pill">📍</div><h2>Preciso de ajuda</h2>
+          <p>Informações sobre atendimento psicológico e lugares onde buscar absorventes gratuitos no Rio.</p>
+          <button data-jump="ajuda">Ver ajuda →</button>
+        </div>
+      </div>
+      <div class="notice"><strong>💌 Uma coisa importante:</strong> não existe pergunta “boba” quando o assunto é seu corpo. Se algo estiver te preocupando, conversar com um profissional de saúde pode ajudar.</div>
+    </section>
+
+    <section id="manual" class="section page hidden">
+      <div class="card">
+        <h2>🩸 Manual da menstruação</h2>
+        <p>Seu ciclo pode variar. O objetivo aqui não é dizer que existe um único jeito “normal”, e sim ajudar você a perceber seu próprio corpo.</p>
+        <div class="step"><div class="num">1</div><div><strong>Prepare seu absorvente.</strong><br>Confira o lado adesivo e, se houver abas, retire os protetores.</div></div>
+        <div class="step"><div class="num">2</div><div><strong>Posicione na roupa íntima.</strong><br>A parte absorvente fica voltada para o corpo e o adesivo para o tecido.</div></div>
+        <div class="step"><div class="num">3</div><div><strong>Ajuste as abas.</strong><br>Se o modelo tiver abas, dobre-as por baixo da roupa íntima para ajudar a mantê-lo no lugar.</div></div>
+        <div class="step"><div class="num">4</div><div><strong>Troque quando precisar.</strong><br>Não espere ficar completamente cheio. Fluxo, conforto e orientação do fabricante ajudam a decidir o momento da troca.</div></div>
+        <div class="step"><div class="num">5</div><div><strong>Descarte corretamente.</strong><br>Enrole o absorvente usado e coloque no lixo. Não jogue no vaso sanitário.</div></div>
+      </div>
+      <div class="notice"><strong>🚨 Procure atendimento</strong><br>se houver dor muito intensa, sangramento muito fora do seu padrão, desmaios, fraqueza importante ou qualquer sintoma que esteja te assustando.</div>
+    </section>
+
+    <section id="dicas" class="section page hidden">
+      <div class="card"><h2>💿 Dicas de amiga</h2>
+        <p><strong>“Como faço para marcar menos?”</strong><br>Roupas mais soltas, tecidos menos finos e um absorvente adequado ao seu fluxo podem deixar tudo mais confortável. Testar formatos diferentes também é normal.</p>
+        <p><strong>“Como faço para grudar melhor?”</strong><br>Use uma roupa íntima com uma superfície de tecido suficiente para o adesivo/abas. Pressione o absorvente por alguns segundos depois de posicioná-lo. Se continuar saindo do lugar, experimente outro formato.</p>
+        <p><strong>“E se eu usar cueca?”</strong><br>O mais importante é o encaixe da peça, não o gênero de quem usa. Algumas cuecas têm uma área central mais adequada para absorventes; testar modelos diferentes pode ajudar.</p>
+        <p><strong>“E na escola?”</strong><br>Deixe um absorvente reserva em uma necessaire ou bolsinha. Se precisar, você pode pedir ajuda a uma pessoa adulta de confiança.</p>
+      </div>
+      <div class="card section"><h2>🧼 Higiene sem paranoia</h2>
+        <p>Lave a região externa com água e sabonete suave, sem necessidade de produtos perfumados. Troque a roupa íntima quando estiver úmida ou desconfortável e evite duchas vaginais.</p>
+      </div>
+    </section>
+
+    <section id="ajuda" class="section page hidden">
+      <div class="card"><h2>🫶 Você não precisa lidar com tudo sozinho/a</h2>
+        <p>Conversar com psicólogo pode ajudar quando a menstruação, mudanças do corpo, escola, ansiedade, vergonha, bullying ou questões de identidade estiverem pesando.</p>
+        <div class="notice"><strong>🧠 Serviços públicos na Zona Oeste</strong><br>Os CAPSi atendem crianças e adolescentes na rede municipal. Antes de ir, vale ligar para confirmar o fluxo de atendimento e a área de referência.</div>
+      </div>
+
+      <div class="card section">
+        <h2>📞 Onde procurar atendimento psicológico</h2>
+        <p><strong>Taquara / Jacarepaguá — CAPSi III Eliza Santa Roza</strong><br>
+        Rua Sampaio Corrêa, 105 — Taquara<br>☎️ (21) 3412-5601 / 3412-5605</p>
+        <p><strong>Campo Grande / Santa Margarida — CAPSi II João de Barro</strong><br>
+        Estrada do Campinho, s/n — Santa Margarida<br>☎️ (21) 3394-2668</p>
+        <p><strong>Bangu / Realengo — CAPSi II Pequeno Hans</strong><br>
+        Rua Carlos Pontes, s/n — Jardim Sulacap<br>☎️ (21) 3355-3887</p>
+        <p><strong>Campo Grande / Inhoaíba — CAPS III Profeta Gentileza</strong><br>
+        Estrada de Inhoaíba, 849 — Inhoaíba<br>☎️ (21) 3155-7057 / (21) 3402-6835</p>
+        <div class="notice"><strong>⚠️ Antes de publicar:</strong> contatos e horários podem mudar. Confirme diretamente com a unidade. A lista acima foi conferida em fontes da Prefeitura/SMS do Rio e em cadastros de atendimento.</div>
+      </div>
+
+      <div class="card section">
+        <h2>📍 Absorvente gratuito</h2>
+        <p>O Programa Dignidade Menstrual permite a retirada gratuita de absorventes em estabelecimentos credenciados do Farmácia Popular para pessoas que atendem aos critérios do programa.</p>
+        <p><strong>Quem pode ter direito:</strong> pessoas que menstruam de 10 a 49 anos, inscritas no CadÚnico e que atendam aos critérios de renda/estudo ou situação de rua previstos pelo programa.</p>
+        <p><strong>Como conseguir:</strong> emitir a “Autorização do Programa Dignidade Menstrual” pelo Meu SUS Digital e apresentá-la, junto com documento de identificação e CPF, em uma farmácia credenciada.</p>
+        <p><strong>Quantidade:</strong> até 40 unidades a cada período de 56 dias, conforme as regras oficiais atuais.</p>
+        <button id="infoDignidade">Como funciona? →</button>
+        <div id="dignidadeInfo" class="notice hidden">
+          <strong>Passo a passo:</strong><br>
+          1. Entre no Meu SUS Digital com sua conta Gov.br.<br>
+          2. Acesse “Dignidade Menstrual”.<br>
+          3. Selecione “Emitir autorização”.<br>
+          4. Leve a autorização e seu documento com CPF a uma farmácia credenciada.<br><br>
+          Se tiver dificuldade para emitir a autorização, uma UBS, CRAS, CREAS ou outro serviço indicado pelo SUS pode ajudar.
+        </div>
+        <p style="margin-top:12px"><strong>☎️ Dúvidas sobre o Farmácia Popular:</strong> Disque 136 (OuvSUS), ligação gratuita.</p>
+      </div>
+
+      <div class="card section">
+        <h2>💊 E anticoncepcional?</h2>
+        <p>Alguns métodos contraceptivos podem alterar o sangramento e, em algumas pessoas, diminuir ou suspender a menstruação. A escolha depende da pessoa e deve ser conversada com profissional de saúde. Não use hormônios ou outros medicamentos por conta própria.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>💗 Informação para acolher, não para substituir atendimento profissional.</footer>
+</div>
+
+<script>
+const app=document.getElementById('app');
+const pages=[...document.querySelectorAll('.page')];
+const nav=[...document.querySelectorAll('[data-section]')];
+
+function show(id){
+  pages.forEach(p=>p.classList.toggle('hidden',p.id!==id));
+  nav.forEach(b=>b.classList.toggle('active',b.dataset.section===id));
+  document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});
+}
+nav.forEach(b=>b.addEventListener('click',()=>show(b.dataset.section)));
+document.querySelectorAll('[data-jump]').forEach(b=>b.addEventListener('click',()=>show(b.dataset.jump)));
+
+document.getElementById('infoDignidade').addEventListener('click',()=>{
+  document.getElementById('dignidadeInfo').classList.toggle('hidden');
+});
+
+let discreet=false;
+document.getElementById('discreetToggle').addEventListener('click',()=>{
+  discreet=!discreet;
+  app.classList.toggle('discreet-mode',discreet);
+  document.getElementById('heroTitle').textContent=discreet?'Meu cantinho':'Menstruei?!';
+  document.getElementById('heroText').innerHTML=discreet
+    ? '<strong>Um espaço pessoal para informações e bem-estar.</strong><br>Você pode sair do modo discreto a qualquer momento.'
+    : '<strong>Calma. Você não precisa descobrir tudo sozinho/a.</strong><br>Um cantinho informativo, acolhedor e sem julgamentos para alunas e alunos que menstruam.';
+  document.getElementById('discreetToggle').textContent=discreet?'✨ Sair do discreto':'👀 Modo discreto';
+  pages.forEach(p=>p.classList.toggle('hidden',discreet));
+  if(!discreet) show('inicio');
+  else window.scrollTo({top:0,behavior:'smooth'});
+});
+</script>
+</body>
+</html>
